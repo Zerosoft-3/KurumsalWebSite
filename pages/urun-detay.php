@@ -14,12 +14,12 @@ if ($product) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Product Details</title>
+  <title>Ürün Detayları - Tohum Web Sitesi</title>
   <link href="favicon.ico" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -59,17 +59,18 @@ if ($product) {
   <?php include 'includes/header.php'; ?>
 
   <main class="main">
+    <!-- Sayfa Başlığı -->
     <div class="page-title" data-aos="fade">
       <div class="container">
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="./">Home</a></li>
-            <li class="current">Product Details</li>
+            <li><a href="./">Ana Sayfa</a></li>
+            <li class="current">Ürün Detayları</li>
           </ol>
         </nav>
-        <h1>Product Details</h1>
+        <h1>Ürün Detayları</h1>
       </div>
-    </div>
+    </div><!-- Sayfa Başlığı Sonu -->
 
     <section id="portfolio-details" class="portfolio-details section">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -89,7 +90,7 @@ if ($product) {
                 <div class="swiper-wrapper align-items-center">
                   <?php foreach ($product_images as $image): ?>
                     <div class="swiper-slide">
-                      <img src="assets/img/product/<?php echo $image; ?>" alt="Product Image">
+                      <img src="assets/img/product/<?php echo $image; ?>" alt="Ürün Görseli">
                     </div>
                   <?php endforeach; ?>
                 </div>
@@ -99,23 +100,23 @@ if ($product) {
 
             <div class="col-lg-4">
               <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
-                <h3>Product Information</h3>
+                <h3>Ürün Bilgileri</h3>
                 <ul>
-                  <li><strong>Category</strong>: <?php echo $category; ?></li>
-                  <li><strong>Product Name</strong>: <?php echo $product['product_name']; ?></li>
-                  <li><strong>Price</strong>: <?php echo number_format($product['price'], 0, '', ' '); ?></li>
+                  <li><strong>Kategori</strong>: <?php echo $category; ?></li>
+                  <li><strong>Ürün Adı</strong>: <?php echo $product['product_name']; ?></li>
+                  <li><strong>Fiyat</strong>: <?php echo number_format($product['price'], 0, '', ' '); ?></li>
                 </ul>
               </div>
               <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
-                <h2>Product Description</h2>
+                <h2>Ürün Açıklaması</h2>
                 <p><?php echo $product['product_name']; ?> – <?php echo $product['description']; ?></p>
               </div>
             </div>
           <?php else: ?>
             <div class="col-12 product-not-found">
               <div>
-                <h3>Product not found</h3>
-                <p>The product you are looking for does not exist.</p>
+                <h3>Ürün bulunamadı</h3>
+                <p>Aradığınız ürün bulunmamaktadır.</p>
               </div>
             </div>
           <?php endif; ?>
@@ -126,18 +127,18 @@ if ($product) {
 
   <?php include 'includes/footer.php'; ?>
 
-  <!-- Scroll to top -->
+  <!-- Başa Dön -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
+  <!-- Vendor JS Dosyaları -->
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-  <!-- Main JS File -->
+  <!-- Ana JS Dosyası -->
   <script src="assets/js/main.js"></script>
 </body>
 
-</html>
+</html> 

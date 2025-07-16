@@ -1,15 +1,15 @@
 <?php
 include 'check.php';
 
-// Fetch products
+// Ürünleri getir
 $products = $query->select('products', '*');
 $categories = $query->eQuery('SELECT * FROM category');
 
-// Product deletion process
+// Ürün silme işlemi
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'delete' && isset($_POST['delete_id'])) {
     $delete_id = $_POST['delete_id'];
 
-    // Delete images
+    // Resimleri sil
     $imagesUrl = $query->select('product_images', '*', "WHERE product_id = $delete_id");
     foreach ($imagesUrl as $image) {
         $imageUrl = "../assets/img/product/" . $image['image_url'];
@@ -18,19 +18,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         }
     }
 
-    // Delete the product
+    // Ürünü sil
     $query->eQuery('DELETE FROM products WHERE id = ?', [$delete_id]);
     exit('success');
 }
 
-// Product addition process
+// Ürün ekleme işlemi
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'add') {
     $product_name = $_POST['product_name'];
     $price = $_POST['price'];
     $description = $_POST['description'];
     $category_id = $_POST['category_id'];
 
-    // Image upload process
+    // Resim yükleme işlemi
     $uploadedImages = [];
     $totalFiles = count($_FILES['image']['name']);
     if ($totalFiles <= 10) {
@@ -60,19 +60,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             exit;
         }
     } else {
-        echo "Please do not upload more than 10 images.";
+        echo "Lütfen 10 adetten fazla resim yüklemeyin.";
     }
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Products</title>
+    <title>Ürünler - Yönetim Paneli</title>
     <link href="../favicon.ico" rel="icon">
     <?php include 'includes/css.php'; ?>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -89,22 +89,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                     <div class="row">
                         <div class="col-md-12">
 
-                            <!-- Add Product Modal -->
+                            <!-- Ürün Ekle Modalı -->
                             <button type="button" class="btn btn-primary mb-3" data-toggle="modal"
                                 data-target="#addCategoryModal">
-                                Add Product
+                                Ürün Ekle
                             </button>
 
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>№</th>
-                                        <th>Product Name</th>
-                                        <th>Image</th>
-                                        <th>Price</th>
-                                        <th>Description</th>
-                                        <th>Category</th>
-                                        <th>Actions</th>
+                                        <th>Ürün Adı</th>
+                                        <th>Resim</th>
+                                        <th>Fiyat</th>
+                                        <th>Açıklama</th>
+                                        <th>Kategori</th>
+                                        <th>İşlemler</th>
                                     </tr>
                                 </thead>
                                 <tbody id="productTable">
@@ -129,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                                             <td>
                                                 <button type="button" class="btn btn-danger"
                                                     onclick="deleteProduct(<?php echo $productid; ?>)">
-                                                    Delete
+                                                    Sil
                                                 </button>
                                             </td>
                                         </tr>
@@ -137,14 +137,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                                 </tbody>
                             </table>
 
-                            <!-- Add Category Modal -->
+                            <!-- Ürün Ekle Modalı -->
                             <div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog"
                                 aria-labelledby="addCategoryLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="productModalLabel">Add Product</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <h5 class="modal-title" id="productModalLabel">Ürün Ekle</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Kapat">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
@@ -152,25 +152,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                                             <div class="modal-body">
                                                 <input type="hidden" name="action" value="add">
                                                 <div class="form-group">
-                                                    <label for="product_name">Product Name</label>
+                                                    <label for="product_name">Ürün Adı</label>
                                                     <input type="text" class="form-control" name="product_name"
                                                         id="productName" maxlength="255" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="price">Price</label>
+                                                    <label for="price">Fiyat</label>
                                                     <input type="number" class="form-control" name="price"
                                                         id="productPrice" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="description">Description</label>
+                                                    <label for="description">Açıklama</label>
                                                     <textarea class="form-control" name="description"
                                                         id="productDescription" required></textarea>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="category_id">Select Category</label>
+                                                    <label for="category_id">Kategori Seç</label>
                                                     <select class="form-control" name="category_id" id="category_id"
                                                         required>
-                                                        <option value="">Select Category</option>
+                                                        <option value="">Kategori Seç</option>
                                                         <?php foreach ($categories as $category): ?>
                                                             <option value="<?php echo $category['id']; ?>">
                                                                 <?php echo htmlspecialchars($category['category_name']); ?>
@@ -179,15 +179,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="image">Upload Images (up to 10)</label>
+                                                    <label for="image">Resim Yükle (en fazla 10)</label>
                                                     <input type="file" class="form-control" name="image[]"
                                                         id="productImage" accept="image/*" multiple required>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Add</button>
+                                                    data-dismiss="modal">Kapat</button>
+                                                <button type="submit" class="btn btn-primary">Ekle</button>
                                             </div>
                                         </form>
                                     </div>
@@ -207,13 +207,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     <script>
         function deleteProduct(id) {
             Swal.fire({
-                title: "Are you sure?",
-                text: "You will not be able to recover this product!",
+                title: "Emin misiniz?",
+                text: "Bu ürünü geri alamayacaksınız!",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Evet, sil!',
+                cancelButtonText: 'İptal'
             }).then((result) => {
                 if (result.value == true) {
 
@@ -227,13 +228,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                         success: function (response) {
                             if (response === 'success') {
                                 $('#product' + id).remove();
-                                Swal.fire("Deleted!", "Product deleted successfully!", "success");
+                                Swal.fire("Silindi!", "Ürün başarıyla silindi!", "success");
                             } else {
-                                Swal.fire("Error!", "An error occurred!", "error");
+                                Swal.fire("Hata!", "Bir hata oluştu!", "error");
                             }
                         },
                         error: function () {
-                            Swal.fire("Error!", "An error occurred with the AJAX request!", "error");
+                            Swal.fire("Hata!", "AJAX isteği sırasında bir hata oluştu!", "error");
                         }
                     });
                 }

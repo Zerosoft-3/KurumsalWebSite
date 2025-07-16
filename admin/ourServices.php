@@ -1,12 +1,12 @@
 <?php
 include 'check.php';
 
-// Old image path for the bioServices
+// Biyo Hizmetler için eski resim yolu
 $old_image_path = "../assets/img/" . $query->select("bioServices", "*")[0]['image'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
-        // Update for bioServices
+        // Biyo Hizmetler için Güncelleme
         if (isset($_POST['update_bio_services'])) {
             $id = $_POST['id'];
             $h2 = $_POST['h2'];
@@ -27,14 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $image_extension = pathinfo($image, PATHINFO_EXTENSION);
 
                 if (!in_array($image_extension, $allowed_extensions)) {
-                    throw new Exception("Invalid image extension.");
+                    throw new Exception("Geçersiz resim uzantısı.");
                 }
 
                 $new_image_name = uniqid() . '-' . basename($image);
                 $target_path = "../assets/img/$new_image_name";
 
                 if (!move_uploaded_file($_FILES['image']['tmp_name'], $target_path)) {
-                    throw new Exception("Error occurred during image upload.");
+                    throw new Exception("Resim yüklenirken hata oluştu.");
                 }
 
                 $sql = "UPDATE bioServices SET h2=?, p1=?, image=?, h3=?, p2=? WHERE id=?";
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         }
 
-        // Update for ourServices
+        // Hizmetlerimiz için Güncelleme
         if (isset($_POST['update_our_services'])) {
             $id = $_POST['id'];
             $service_name = $_POST['service_name'];
@@ -61,19 +61,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         }
     } catch (Exception $e) {
-        echo 'Error: ' . $e->getMessage();
+        echo 'Hata: ' . $e->getMessage();
     }
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Our Services</title>
+    <title>Hizmetlerimiz - Yönetim Paneli</title>
     <link href="../favicon.ico" rel="icon">
     <!-- css -->
     <?php include 'includes/css.php'; ?>
@@ -94,25 +94,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <thead>
                                     <tr>
                                         <th>№</th>
-                                        <th>Title</th>
-                                        <th>Comment</th>
-                                        <th>Subtitle</th>
-                                        <th>Paragraph</th>
-                                        <th>Image</th>
-                                        <th>Actions</th>
+                                        <th>Başlık</th>
+                                        <th>Yorum</th>
+                                        <th>Alt Başlık</th>
+                                        <th>Paragraf</th>
+                                        <th>Resim</th>
+                                        <th>İşlemler</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $bioServices = $query->select('bioServices'); // Fetching data from 'bioServices' table
+                                    $bioServices = $query->select('bioServices'); // 'bioServices' tablosundan veri çekiliyor
                                     foreach ($bioServices as $service) {
                                         echo "<tr>";
                                         echo "<td>{$service['id']}</td>"; // ID
-                                        echo "<td>{$service['h2']}</td>"; // Title
-                                        echo "<td>{$service['p1']}</td>"; // Comment
-                                        echo "<td>{$service['h3']}</td>"; // Subtitle
-                                        echo "<td>{$service['p2']}</td>"; // Paragraph
-                                        echo "<td><img src='../assets/img/{$service['image']}' alt='{$service['h2']}' style='width: 100px; height: auto;'></td>"; // Image
+                                        echo "<td>{$service['h2']}</td>"; // Başlık
+                                        echo "<td>{$service['p1']}</td>"; // Yorum
+                                        echo "<td>{$service['h3']}</td>"; // Alt Başlık
+                                        echo "<td>{$service['p2']}</td>"; // Paragraf
+                                        echo "<td><img src='../assets/img/{$service['image']}' alt='{$service['h2']}' style='width: 100px; height: auto;'></td>"; // Resim
                                         ?>
                                         <td>
                                             <button class="btn btn-warning edit-service"
@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                 data-h3="<?php echo htmlspecialchars($service['h3'], ENT_QUOTES); ?>"
                                                 data-p2="<?php echo htmlspecialchars($service['p2'], ENT_QUOTES); ?>"
                                                 data-image="<?php echo htmlspecialchars($service['image'], ENT_QUOTES); ?>">
-                                                Edit
+                                                Düzenle
                                             </button>
                                         </td>
                                         <?php
@@ -131,27 +131,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 </tbody>
                             </table>
 
-                            <!-- Our Services Table -->
-                            <h3>Our Services List</h3>
+                            <!-- Hizmetlerimiz Tablosu -->
+                            <h3>Hizmetlerimiz Listesi</h3>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>№</th>
-                                        <th>Service Name</th>
-                                        <th>Skill Level</th>
-                                        <th>Actions</th>
+                                        <th>Hizmet Adı</th>
+                                        <th>Beceri Seviyesi</th>
+                                        <th>İşlemler</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $ourServices = $query->select('ourServices'); // Fetching data from 'ourServices' table
+                                    $ourServices = $query->select('ourServices'); // 'ourServices' tablosundan veri çekiliyor
                                     foreach ($ourServices as $service) {
                                         echo "<tr>";
-                                        echo "<td>{$service['id']}</td>"; // Service id
-                                        echo "<td>{$service['service_name']}</td>"; // Service Name
-                                        echo "<td>{$service['skill_level']}</td>"; // Skill Level
+                                        echo "<td>{$service['id']}</td>"; // Hizmet ID
+                                        echo "<td>{$service['service_name']}</td>"; // Hizmet Adı
+                                        echo "<td>{$service['skill_level']}</td>"; // Beceri Seviyesi
                                         echo "<td>
-                                            <button class='btn btn-warning edit-our-service' ourServices-id='{$service['id']}' serviceName='{$service['service_name']}' skillLevel='{$service['skill_level']}'>Edit</button>
+                                            <button class='btn btn-warning edit-our-service' ourServices-id='{$service['id']}' serviceName='{$service['service_name']}' skillLevel='{$service['skill_level']}'>Düzenle</button>
                                         </td>";
                                         echo "</tr>";
                                     }
@@ -164,18 +164,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </section>
         </div>
 
-        <!-- Main Footer -->
+        <!-- Ana Altbilgi -->
         <?php include 'includes/footer.php'; ?>
     </div>
 
-    <!-- Edit Modal -->
+    <!-- Düzenleme Modalı -->
     <div class="modal fade" id="editServiceModal" tabindex="-1" role="dialog" aria-labelledby="editServiceModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editServiceModalLabel">Edit Service</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title" id="editServiceModalLabel">Hizmeti Düzenle</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Kapat">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -184,49 +184,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <input type="hidden" name="id" id="service-id" required>
 
                         <div class="form-group">
-                            <label for="h2">Title:</label>
-                            <input type="text" class="form-control" name="h2" id="h2" placeholder="Enter the title"
+                            <label for="h2">Başlık:</label>
+                            <input type="text" class="form-control" name="h2" id="h2" placeholder="Başlık girin"
                                 maxlength="255" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="p1">Comment:</label>
-                            <textarea class="form-control" name="p1" id="p1" placeholder="Enter the comment"
+                            <label for="p1">Yorum:</label>
+                            <textarea class="form-control" name="p1" id="p1" placeholder="Yorum girin"
                                 required></textarea>
                         </div>
 
                         <div class="form-group">
-                            <label for="image">Image:</label>
+                            <label for="image">Resim:</label>
                             <input type="file" class="form-control" name="image" id="image" accept="image/*">
                         </div>
 
                         <div class="form-group">
-                            <label for="h3">Additional Title:</label>
+                            <label for="h3">Ek Başlık:</label>
                             <input type="text" class="form-control" name="h3" id="h3"
-                                placeholder="Enter additional title" required>
+                                placeholder="Ek başlık girin" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="p2">Additional Paragraph:</label>
-                            <textarea class="form-control" name="p2" id="p2" placeholder="Enter additional paragraph"
+                            <label for="p2">Ek Paragraf:</label>
+                            <textarea class="form-control" name="p2" id="p2" placeholder="Ek paragraf girin"
                                 required></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary" name="update_bio_services">Update</button>
+                        <button type="submit" class="btn btn-primary" name="update_bio_services">Güncelle</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Our Services Edit Modal -->
+    <!-- Hizmetlerimiz Düzenleme Modalı -->
     <div class="modal fade" id="editOurServiceModal" tabindex="-1" role="dialog"
         aria-labelledby="editOurServiceModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editOurServiceModalLabel">Edit Service</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title" id="editOurServiceModalLabel">Hizmeti Düzenle</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Kapat">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -234,16 +234,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <form method="POST" id="editServiceForm">
                         <input type="hidden" name="id" id="our-service-id" value="">
                         <div class="form-group">
-                            <label for="service_name">Service Name:</label>
+                            <label for="service_name">Hizmet Adı:</label>
                             <input type="text" class="form-control" name="service_name" id="service_name"
                                 maxlength="255" required>
                         </div>
                         <div class="form-group">
-                            <label for="skill_level">Skill Level:</label>
+                            <label for="skill_level">Beceri Seviyesi:</label>
                             <input type="text" class="form-control" name="skill_level" id="skill_level" maxlength="2"
                                 required>
                         </div>
-                        <button type="submit" class="btn btn-primary" name="update_our_services">Update</button>
+                        <button type="submit" class="btn btn-primary" name="update_our_services">Güncelle</button>
                     </form>
                 </div>
             </div>

@@ -31,10 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add'])) {
             header("Location: {$_SERVER['PHP_SELF']}");
             exit;
         } else {
-            echo "Error occurred while uploading the image.";
+            echo "Resim yüklenirken bir hata oluştu.";
         }
     } else {
-        echo "No image selected.";
+        echo "Resim seçilmedi.";
     }
 }
 
@@ -52,26 +52,26 @@ if (isset($_GET['delete'])) {
                 header("Location: {$_SERVER['PHP_SELF']}");
                 exit;
             } else {
-                echo "An error occurred while deleting the image.";
+                echo "Resim silinirken bir hata oluştu.";
             }
         } else {
-            echo "Image not found.";
+            echo "Banner silmek için bulunamadı.";
         }
     } else {
-        echo "Banner not found for deletion.";
+        echo "Banner silmek için bulunamadı.";
     }
 }
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Banner Yönetim</title>
+    <title>Banner Management</title>
     <!-- CSS files -->
     <?php include 'includes/css.php'; ?>
     <link href="../favicon.ico" rel="icon">
@@ -85,62 +85,62 @@ if (isset($_GET['delete'])) {
             <section class="content">
                 <div class="container-fluid">
 
-                    <!-- Button to add banners -->
+                    <!-- Banner ekleme butonu -->
                     <button type="button" class="btn btn-primary mb-3" data-toggle="modal"
                         data-target="#addBannerModal">
-                        Add Banner
+                        Banner Ekle
                     </button>
 
-                    <!-- Add Banner modal -->
+                    <!-- Banner Ekle modalı -->
                     <div class="modal fade" id="addBannerModal" tabindex="-1" role="dialog"
                         aria-labelledby="addBannerModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="addBannerModalLabel">Add Banner</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <h5 class="modal-title" id="addBannerModalLabel">Banner Ekle</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Kapat">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <form action="" method="POST" enctype="multipart/form-data">
                                     <div class="modal-body">
                                         <div class="form-group">
-                                            <label for="image">Select Image</label>
+                                            <label for="image">Resim Seç</label>
                                             <input type="file" class="form-control" id="image" name="image"
                                                 accept="image/*" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="title">Title</label>
+                                            <label for="title">Başlık</label>
                                             <input type="text" class="form-control" id="title" name="title"
-                                                placeholder="Title" maxlength="255" required>
+                                                placeholder="Başlık" maxlength="255" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="description">Description</label>
+                                            <label for="description">Açıklama</label>
                                             <textarea class="form-control" id="description" name="description"
-                                                placeholder="Description" required></textarea>
+                                                placeholder="Açıklama" required></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label for="button_text">Button Text</label>
+                                            <label for="button_text">Buton Metni</label>
                                             <input type="text" class="form-control" id="button_text" name="button_text"
-                                                placeholder="Button text" maxlength="100" required>
+                                                placeholder="Buton metni" maxlength="100" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="button_link">Button Link</label>
+                                            <label for="button_link">Buton Linki</label>
                                             <input type="text" class="form-control" id="button_link" name="button_link"
-                                                placeholder="Button link" maxlength="255" required>
+                                                placeholder="Buton linki" maxlength="255" required>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Close</button>
-                                        <button type="submit" name="add" class="btn btn-primary">Add</button>
+                                            data-dismiss="modal">Kapat</button>
+                                        <button type="submit" name="add" class="btn btn-primary">Ekle</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Banner list -->
+                    <!-- Banner listesi -->
                     <div class="card-header">
                     </div>
                     <table class="table table-bordered">
@@ -148,12 +148,12 @@ if (isset($_GET['delete'])) {
                         <thead>
                             <tr>
                                 <th>№</th>
-                                <th>Image</th>
-                                <th>Title</th>
-                                <th>Description</th>
-                                <th>Button Text</th>
-                                <th>Button Link</th>
-                                <th>Actions</th>
+                                <th>Resim</th>
+                                <th>Başlık</th>
+                                <th>Açıklama</th>
+                                <th>Buton Metni</th>
+                                <th>Buton Linki</th>
+                                <th>İşlemler</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -168,7 +168,7 @@ if (isset($_GET['delete'])) {
                                     <td><?php echo $banner['button_link']; ?></td>
                                     <td>
                                         <button onclick="deleteBanner(<?php echo $banner['id']; ?>)" type="button"
-                                            class="btn btn-danger" onclick="deleteProduct(2)">Delete</button>
+                                            class="btn btn-danger" onclick="deleteProduct(2)">Sil</button>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -178,23 +178,24 @@ if (isset($_GET['delete'])) {
             </section>
         </div>
 
-        <!-- Footer -->
+        <!-- Altbilgi -->
         <?php include 'includes/footer.php'; ?>
     </div>
 
-    <!-- JS files -->
+    <!-- JS dosyaları -->
     <?php include 'includes/js.php'; ?>
 
     <script>
         function deleteBanner(id) {
             Swal.fire({
-                title: "Are you sure?",
-                text: "You will not be able to recover this banner!",
+                title: "Emin misiniz?",
+                text: "Bu bannerı geri alamayacaksınız!",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Evet, sil!',
+                cancelButtonText: 'İptal'
             }).then((result) => {
                 if (result.value == true) {
                     $.ajax({
@@ -205,12 +206,12 @@ if (isset($_GET['delete'])) {
                             delete: id
                         },
                         success: function (response) {
-                            Swal.fire("Deleted!", "Banner deleted successfully!", "success").then(() => {
+                            Swal.fire("Silindi!", "Banner başarıyla silindi!", "success").then(() => {
                                 location.reload();
                             });
                         },
                         error: function (xhr, status, error) {
-                            Swal.fire("Error!", "There was an error deleting the banner.", "error");
+                            Swal.fire("Hata!", "Banner silinirken bir hata oluştu.", "error");
                         }
                     });
                 }

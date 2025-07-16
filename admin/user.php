@@ -20,9 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   document.addEventListener('DOMContentLoaded', function() {
       Swal.fire({
           icon: 'success',
-          title: 'Successfully updated!',
-          text: 'User information has been updated!',
-          confirmButtonText: 'OK'
+          title: 'Başarıyla güncellendi!',
+          text: 'Kullanıcı bilgileri güncellendi!',
+          confirmButtonText: 'Tamam'
       }).then((result) => {
           window.location.href = './';
       });
@@ -31,14 +31,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Update User</title>
+  <title>Kullanıcı Güncelleme</title>
   <!-- CSS includes -->
   <?php include 'includes/css.php'; ?>
   <link href="../favicon.ico" rel="icon">
@@ -54,37 +54,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
           <div class="row">
             <div class="col-md-6 mx-auto">
-              <!-- User update form -->
+              <!-- Kullanıcı güncelleme formu -->
               <div class="card" style="margin-top: 50px">
                 <div class="card-header">
-                  <h3 class="card-title">Update User</h3>
+                  <h3 class="card-title">Kullanıcı Güncelle</h3>
                 </div>
 
-                <!-- Form starts here -->
+                <!-- Form buradan başlar -->
                 <form action="" method="POST" enctype="multipart/form-data">
                   <div class="card-body">
                     <div class="form-group">
-                      <label for="name">Full Name</label>
-                      <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name"
+                      <label for="name">Tam Ad</label>
+                      <input type="text" class="form-control" id="name" name="name" placeholder="Adınızı girin"
                         value="<?php echo $user['name'] ?>" required>
                     </div>
 
                     <div class="form-group">
-                      <label for="username">Username</label>
-                      <input type="text" class="form-control" id="username" name="username" placeholder="Enter username"
+                      <label for="username">Kullanıcı Adı</label>
+                      <input type="text" class="form-control" id="username" name="username" placeholder="Kullanıcı adını girin"
                         value="<?php echo $user['username'] ?>" required>
                     </div>
 
                     <div class="form-group">
-                      <label for="password">Password</label>
+                      <label for="password">Şifre</label>
                       <input type="password" class="form-control" id="password" name="password"
-                        placeholder="Enter password" required>
+                        placeholder="Şifreyi girin" required>
                     </div>
                   </div>
 
-                  <!-- Submit button -->
+                  <!-- Gönder butonu -->
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">Güncelle</button>
                   </div>
                 </form>
               </div>
@@ -95,11 +95,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </section>
     </div>
 
-    <!-- Main Footer -->
+    <!-- Ana Altbilgi -->
     <?php include 'includes/footer.php'; ?>
   </div>
 
-  <!-- SCRIPTS -->
+  <!-- KOMUT DOSYALARI -->
   <?php include 'includes/js.php' ?>
 </body>
 

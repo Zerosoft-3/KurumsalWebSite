@@ -25,14 +25,14 @@ foreach ($serviceItems as $item) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>About Us</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>Hakkımızda - Tohum Web Sitesi</title>
+  <meta name="description" content="Şirketimiz hakkında detaylı bilgi, tarihçemiz ve hedeflerimiz.">
+  <meta name="keywords" content="hakkımızda, tohum, tarım, şirket, vizyon, misyon">
   <link href="favicon.ico" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -52,27 +52,27 @@ foreach ($serviceItems as $item) {
 
   <main class="main">
 
-    <!-- Page Title -->
+    <!-- Sayfa Başlığı -->
     <div class="page-title" data-aos="fade">
       <div class="container">
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="./">Home</a></li>
-            <li class="current">About Us</li>
+            <li><a href="./">Ana Sayfa</a></li>
+            <li class="current">Hakkımızda</li>
           </ol>
         </nav>
-        <h1>About Us</h1>
+        <h1>Hakkımızda</h1>
       </div>
-    </div><!-- Page Title Ends -->
+    </div><!-- Sayfa Başlığı Sonu -->
 
-    <!-- About Section -->
+    <!-- Hakkımızda Bölümü -->
     <section id="about" class="section about">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4">
           <?php foreach ($aboutItems as $about): ?>
             <div class="col-lg-6 order-1 order-lg-2">
               <?php if (!empty($about['image'])): ?>
-                <img src="<?= htmlspecialchars($about['image']) ?>" class="img-fluid" alt="About Us">
+                <img src="<?= htmlspecialchars($about['image']) ?>" class="img-fluid" alt="Hakkımızda">
               <?php endif; ?>
             </div>
             <div class="col-lg-6 order-2 order-lg-1 content">
@@ -89,9 +89,9 @@ foreach ($serviceItems as $item) {
           <?php endforeach; ?>
         </div>
       </div>
-    </section><!-- /About Section Ends -->
+    </section><!-- /Hakkımızda Bölümü Sonu -->
 
-    <!-- Statistics Section -->
+    <!-- İstatistikler Bölümü -->
     <section id="stats" class="stats section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -105,22 +105,22 @@ foreach ($serviceItems as $item) {
                 <span data-purecounter-start="0" data-purecounter-end="<?= $stat['count'] ?>" data-purecounter-duration="1" class="purecounter"></span>
                 <p><strong><?= $stat['title'] ?></strong> <span><?= $stat['description'] ?></span></p>
               </div>
-            </div><!-- Statistics Section Ends -->
+            </div><!-- İstatistikler Bölümü Sonu -->
           <?php endforeach; ?>
 
         </div>
 
-      </div><!-- /Statistics Section Ends -->
+      </div><!-- /İstatistikler Bölümü Sonu -->
 
   </main>
 
   <?php include 'includes/footer.php' ?>
 
 
-  <!-- Scroll to Top -->
+  <!-- Başa Dön -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
+  <!-- Vendor JS Dosyaları -->
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
@@ -130,9 +130,9 @@ foreach ($serviceItems as $item) {
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
 
-  <!-- Main JS File -->
+  <!-- Ana JS Dosyası -->
   <script src="assets/js/main.js"></script>
 
 </body>
 
-</html>
+</html> 
