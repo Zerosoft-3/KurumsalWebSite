@@ -7,14 +7,14 @@ $ourservices = $query->select('ourServices');
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Services</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>Hizmetler - Tohum Web Sitesi</title>
+  <meta name="description" content="Tohum Web Sitesi hizmetleri ve çözümleri.">
+  <meta name="keywords" content="hizmetler, tohum, tarım, danışmanlık">
   <link href="favicon.ico" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -34,34 +34,34 @@ $ourservices = $query->select('ourServices');
 
   <main class="main">
 
-    <!-- Page Title -->
+    <!-- Sayfa Başlığı -->
     <div class="page-title" data-aos="fade">
       <div class="container">
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="./">Home</a></li>
-            <li class="current">Services</li>
+            <li><a href="./">Ana Sayfa</a></li>
+            <li class="current">Hizmetler</li>
           </ol>
         </nav>
-        <h1>Services</h1>
+        <h1>Hizmetler</h1>
       </div>
-    </div><!-- End Page Title -->
+    </div><!-- Sayfa Başlığı Sonu -->
 
-    <!-- Skills Section -->
+    <!-- Yetenekler Bölümü -->
     <section id="skills" class="skills section">
 
-      <!-- Section Title -->
+      <!-- Bölüm Başlığı -->
       <div class="container section-title" data-aos="fade-up">
         <h2><?php echo $bioservices[0]['h2'] ?></h2>
         <p><?php echo $bioservices[0]['p1'] ?></p>
-      </div><!-- End Section Title -->
+      </div><!-- Bölüm Başlığı Sonu -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row">
 
           <div class="col-lg-6 d-flex align-items-center">
-            <img src="assets/img/<?php echo $bioservices[0]['image'] ?>" class="img-fluid" alt="Our Products">
+            <img src="assets/img/<?php echo $bioservices[0]['image'] ?>" class="img-fluid" alt="Hizmetlerimiz">
           </div>
 
           <div class="col-lg-6 pt-4 pt-lg-0 content">
@@ -79,7 +79,7 @@ $ourservices = $query->select('ourServices');
                   <div class="progress-bar-wrap">
                     <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $service['skill_level']; ?>" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                </div><!-- End Skills Item -->
+                </div><!-- Yetenek Öğesi Sonu -->
               <?php endforeach; ?>
 
             </div>
@@ -91,7 +91,7 @@ $ourservices = $query->select('ourServices');
 
     </section>
 
-    <!-- Services Section -->
+    <!-- Hizmetler Bölümü -->
     <section id="services" class="services section">
       <div class="container">
         <div class="row gy-4">
@@ -106,20 +106,20 @@ $ourservices = $query->select('ourServices');
                 </a>
                 <p><?= htmlspecialchars($service['description']) ?></p>
               </div>
-            </div><!-- End Service Item -->
+            </div><!-- Hizmet Öğesi Sonu -->
           <?php endforeach; ?>
         </div>
       </div>
-    </section><!-- End Services Section -->
+    </section><!-- Hizmetler Bölümü Sonu -->
 
   </main>
 
   <?php include 'includes/footer.php'; ?>
 
-  <!-- Scroll Top -->
+  <!-- Başa Dön -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
+  <!-- Vendor JS Dosyaları -->
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
@@ -129,9 +129,9 @@ $ourservices = $query->select('ourServices');
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
 
-  <!-- Main JS File -->
+  <!-- Ana JS Dosyası -->
   <script src="assets/js/main.js"></script>
 
 </body>
 
-</html>
+</html> 

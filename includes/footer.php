@@ -7,26 +7,26 @@
                     <span class="sitename">Iqbolshoh</span>
                 </a>
                 <div class="footer-contact pt-3">
-                    <p><strong>Location:</strong> <?php echo  $contact_boxData[0]['value']; ?></p>
-                    <p class="mt-3"><strong>Phone:</strong> <span onclick="window.location.href='tel:<?php echo trim($contact_boxData[2]['value']); ?>'"><?php echo $contact_boxData[1]['value']; ?></span></p>
-                    <p><strong>Email:</strong> <span onclick="window.location.href='mailto:<?php echo $contact_boxData[2]['value']; ?>'"><?php echo  $contact_boxData[2]['value']; ?></span></p>
+                    <p><strong>Konum:</strong> <?php echo  $contact_boxData[0]['value']; ?></p>
+                    <p class="mt-3"><strong>Telefon:</strong> <span onclick="window.location.href='tel:<?php echo trim($contact_boxData[2]['value']); ?>'"><?php echo $contact_boxData[1]['value']; ?></span></p>
+                    <p><strong>E-posta:</strong> <span onclick="window.location.href='mailto:<?php echo $contact_boxData[2]['value']; ?>'"><?php echo  $contact_boxData[2]['value']; ?></span></p>
                 </div>
             </div>
 
             <div class="col-lg-4 col-md-6 col-sm-12 footer-links mb-4">
-                <h4>Useful Links</h4>
+                <h4>Faydalı Bağlantılar</h4>
                 <ul>
-                    <li><i class="bi bi-chevron-right"></i> <a href="./">Home</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="about.php">About Us</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="products.php">Products</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="services.php">Services</a></li>
-                    <li><i class="bi bi-chevron-right"></i> <a href="contact.php">Contact</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="./">Ana Sayfa</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="pages/hakkimizda.php">Hakkımızda</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="pages/urunler.php">Ürünler</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="pages/hizmetler.php">Hizmetler</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="pages/iletisim.php">İletişim</a></li>
                 </ul>
             </div>
 
             <div class="col-lg-4 col-md-12 footer-follow mb-4">
-                <h4>Follow Us</h4>
-                <p>We will keep you updated with the latest products and offers. Follow us on social media!</p>
+                <h4>Bizi Takip Edin</h4>
+                <p>En yeni ürünler ve tekliflerden haberdar olmak için bizi takip edin! Sosyal medyada bizi takip edin!</p>
                 <div class="social-links d-flex">
                     <a href="https://twitter.com/<?php echo  $contactData[0]['twitter']; ?>" target="_blank"><i class="bi bi-twitter"></i></a>
                     <a href="https://facebook.com/<?php echo  $contactData[0]['facebook']; ?>" target="_blank"><i class="bi bi-facebook"></i></a>
@@ -38,7 +38,7 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename"> <a href="https://iqbolshoh.uz/"> Iqbolshoh.uz</a></strong> <span>All rights reserved</span></p>
+        <p>© <span>Telif Hakkı</span> <strong class="px-1 sitename"> <a href="https://iqbolshoh.uz/"> Iqbolshoh.uz</a></strong> <span>Tüm hakları saklıdır</span></p>
     </div>
 
     <style>

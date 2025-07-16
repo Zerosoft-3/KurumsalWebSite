@@ -2,11 +2,11 @@
 
 <?php
 
-// Fetch contact information
+// İletişim bilgilerini çek
 $contact = $query->select('contact', "*")[0];
 $contact_box = $query->select('contact_box', "*");
 
-// Check if the request method is POST
+// İstek metodunun POST olup olmadığını kontrol et
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['twitter'])) {
         $twitter = $_POST['twitter'];
@@ -14,44 +14,44 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sql = "UPDATE contact SET twitter=? WHERE id=1";
         $query->eQuery($sql, [$twitter]);
 
-        echo json_encode(['success' => true, 'message' => 'Twitter link has been updated!', 'twitter' => $twitter]);
+        echo json_encode(['success' => true, 'message' => 'Twitter bağlantısı güncellendi!', 'twitter' => $twitter]);
         exit();
     }
 
-    // Update Facebook link
+    // Facebook bağlantısını güncelle
     if (isset($_POST['facebook'])) {
         $facebook = $_POST['facebook'];
 
         $sql = "UPDATE contact SET facebook=? WHERE id=1";
         $query->eQuery($sql, [$facebook]);
 
-        echo json_encode(['success' => true, 'message' => 'Facebook link has been updated!', 'facebook' => $facebook]);
+        echo json_encode(['success' => true, 'message' => 'Facebook bağlantısı güncellendi!', 'facebook' => $facebook]);
         exit();
     }
 
-    // Update Instagram link
+    // Instagram bağlantısını güncelle
     if (isset($_POST['instagram'])) {
         $instagram = $_POST['instagram'];
 
         $sql = "UPDATE contact SET instagram=? WHERE id=1";
         $query->eQuery($sql, [$instagram]);
 
-        echo json_encode(['success' => true, 'message' => 'Instagram link has been updated!', 'instagram' => $instagram]);
+        echo json_encode(['success' => true, 'message' => 'Instagram bağlantısı güncellendi!', 'instagram' => $instagram]);
         exit();
     }
 
-    // Update LinkedIn link
+    // LinkedIn bağlantısını güncelle
     if (isset($_POST['linkedin'])) {
         $linkedin = $_POST['linkedin'];
 
         $sql = "UPDATE contact SET linkedin=? WHERE id=1";
         $query->eQuery($sql, [$linkedin]);
 
-        echo json_encode(['success' => true, 'message' => 'LinkedIn link has been updated!', 'linkedin' => $linkedin]);
+        echo json_encode(['success' => true, 'message' => 'LinkedIn bağlantısı güncellendi!', 'linkedin' => $linkedin]);
         exit();
     }
 
-    // Update Contact Box information
+    // İletişim Kutusu bilgilerini güncelle
     foreach ($contact_box as $box) {
         $title_field = 'title-' . $box['id'];
         $value_field = 'value-' . $box['id'];
@@ -71,13 +71,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <title>Contact</title>
+    <title>İletişim Yönetimi</title>
     <link href="../favicon.ico" rel="icon">
     <!-- CSS -->
     <?php include 'includes/css.php'; ?>
@@ -91,14 +91,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <section class="content">
                 <div class="container-fluid">
 
-                    <!-- Contact Links Table -->
+                    <!-- İletişim Bağlantıları Tablosu -->
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>№</th>
-                                <th>Social Media</th>
-                                <th>Link</th>
-                                <th>Actions</th>
+                                <th>Sosyal Medya</th>
+                                <th>Bağlantı</th>
+                                <th>İşlemler</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -113,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <td><?php echo $socialLink; ?></td>
                                     <td>
                                         <button class='btn btn-warning' data-bs-toggle='modal'
-                                            data-bs-target='#contactModal-<?php echo $index; ?>'>Edit</button>
+                                            data-bs-target='#contactModal-<?php echo $index; ?>'>Düzenle</button>
                                     </td>
                                 </tr>
 
@@ -122,11 +122,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <div class='modal-dialog'>
                                         <div class='modal-content'>
                                             <div class='modal-header'>
-                                                <h5 class='modal-title' id='contactModalLabel-<?php echo $index; ?>'>Edit
-                                                    <?php echo ucfirst($social); ?>
+                                                <h5 class='modal-title' id='contactModalLabel-<?php echo $index; ?>'>
+                                                    <?php echo ucfirst($social); ?> Bağlantısını Düzenle
                                                 </h5>
                                                 <button type="button" class="close" data-bs-dismiss="modal"
-                                                    aria-label="Close">
+                                                    aria-label="Kapat">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
@@ -136,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                     <div class='form-group'>
                                                         <label
                                                             for='<?php echo htmlspecialchars($social, ENT_QUOTES, 'UTF-8'); ?>'>
-                                                            <?php echo ucfirst(htmlspecialchars($social, ENT_QUOTES, 'UTF-8')); ?>
+                                                            <?php echo ucfirst(htmlspecialchars($social, ENT_QUOTES, 'UTF-8')); ?> Linki
                                                         </label>
                                                         <input type='text'
                                                             name='<?php echo htmlspecialchars($social, ENT_QUOTES, 'UTF-8'); ?>'
@@ -145,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                             value='<?php echo htmlspecialchars($socialLink, ENT_QUOTES, 'UTF-8'); ?>'
                                                             maxlength='255'>
                                                     </div>
-                                                    <button type='submit' class='btn btn-primary'>Save</button>
+                                                    <button type='submit' class='btn btn-primary'>Kaydet</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -156,14 +156,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     </table>
 
-                    <!-- Contact Box Table -->
+                    <!-- İletişim Kutusu Tablosu -->
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>№</th>
-                                <th>Title</th>
-                                <th>Value</th>
-                                <th>Actions</th>
+                                <th>Başlık</th>
+                                <th>Değer</th>
+                                <th>İşlemler</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -174,28 +174,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <td><?= htmlspecialchars($box['value']) ?></td>
                                     <td>
                                         <button class='btn btn-warning' data-bs-toggle='modal'
-                                            data-bs-target='#contactBoxModal-<?= $box['id'] ?>'>Edit</button>
+                                            data-bs-target='#contactBoxModal-<?= $box['id'] ?>'>Düzenle</button>
                                     </td>
                                 </tr>
 
-                                <!-- Individual modal for each contact box -->
+                                <!-- Her iletişim kutusu için ayrı modal -->
                                 <div class='modal fade' id='contactBoxModal-<?= $box['id'] ?>' tabindex='-1'
                                     aria-labelledby='contactBoxModalLabel-<?= $box['id'] ?>' aria-hidden='true'>
                                     <div class='modal-dialog'>
                                         <div class='modal-content'>
                                             <div class='modal-header'>
-                                                <h5 class='modal-title' id='contactBoxModalLabel-<?= $box['id'] ?>'>Edit
-                                                    <?= htmlspecialchars($box['title']) ?>
+                                                <h5 class='modal-title' id='contactBoxModalLabel-<?= $box['id'] ?>'>
+                                                    <?= htmlspecialchars($box['title']) ?> Düzenle
                                                 </h5>
                                                 <button type="button" class="close" data-bs-dismiss="modal"
-                                                    aria-label="Close">
+                                                    aria-label="Kapat">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class='modal-body'>
                                                 <form id='contactBoxForm-<?= $box['id'] ?>' action='' method='POST'>
                                                     <div class='form-group'>
-                                                        <label for='title-<?= $box['id'] ?>'>Title</label>
+                                                        <label for='title-<?= $box['id'] ?>'>Başlık</label>
                                                         <input type='text' name='title-<?= $box['id'] ?>'
                                                             id='title-<?= $box['id'] ?>' class='form-control'
                                                             value='<?= htmlspecialchars($box['title']) ?>' maxlength='255'>
@@ -208,7 +208,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                             id='value-<?= $box['id'] ?>' class='form-control'
                                                             value='<?= htmlspecialchars($box['value']) ?>' maxlength='255'>
                                                     </div>
-                                                    <button type='submit' class='btn btn-primary'>Save</button>
+                                                    <button type='submit' class='btn btn-primary'>Kaydet</button>
                                                 </form>
                                             </div>
                                         </div>

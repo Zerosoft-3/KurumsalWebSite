@@ -17,14 +17,14 @@ foreach ($products as $product) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Products</title>
-  <meta name="description" content="Product listings and details">
-  <meta name="keywords" content="products, online store, shopping">
+  <title>Ürünler - Tohum Web Sitesi</title>
+  <meta name="description" content="Tohum Web Sitesi ürün listeleri ve detayları.">
+  <meta name="keywords" content="ürünler, tohum, tarım, çeşitler">
   <link href="favicon.ico" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -44,31 +44,31 @@ foreach ($products as $product) {
 
   <main class="main">
 
-    <!-- Page Title -->
+    <!-- Sayfa Başlığı -->
     <div class="page-title" data-aos="fade">
       <div class="container">
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="./">Home</a></li>
-            <li class="current">Products</li>
+            <li><a href="./">Ana Sayfa</a></li>
+            <li class="current">Ürünler</li>
           </ol>
         </nav>
-        <h1>Products</h1>
+        <h1>Ürünler</h1>
       </div>
-    </div><!-- End Page Title -->
+    </div><!-- Sayfa Başlığı Sonu -->
 
-    <!-- Products Section -->
+    <!-- Ürünler Bölümü -->
     <section id="portfolio" class="portfolio section">
       <div class="container">
         <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
-          <!-- Products Category -->
+          <!-- Ürün Kategorisi -->
           <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter="*" class="filter-active">Tümü</li>
             <?php foreach ($categories as $category): ?>
               <li data-filter=".filter-category-<?= $category['id'] ?>"><?= $category['category_name'] ?></li>
             <?php endforeach; ?>
-          </ul><!-- End Products Category -->
+          </ul><!-- Ürün Kategorisi Sonu -->
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
             <?php foreach ($grouped_products as $category_id => $products): ?>
@@ -93,24 +93,24 @@ foreach ($products as $product) {
                       </div>
                     </a>
                   </div>
-                </div><!-- End Portfolio Item -->
+                </div><!-- Ürün Öğesi Sonu -->
               <?php endforeach; ?>
             <?php endforeach; ?>
 
-          </div><!-- End Portfolio Container -->
+          </div><!-- Ürün Kutusu Sonu -->
 
         </div>
       </div>
-    </section><!-- /Portfolio Section -->
+    </section><!-- /Ürünler Bölümü Sonu -->
 
   </main>
 
   <?php include 'includes/footer.php'; ?>
 
-  <!-- Scroll Top -->
+  <!-- Başa Dön -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
+  <!-- Vendor JS Dosyaları -->
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
@@ -120,9 +120,9 @@ foreach ($products as $product) {
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
 
-  <!-- Main JS File -->
+  <!-- Ana JS Dosyası -->
   <script src="assets/js/main.js"></script>
 
 </body>
 
-</html>
+</html> 

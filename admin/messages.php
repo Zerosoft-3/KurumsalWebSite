@@ -20,14 +20,14 @@ if (isset($_POST['delete_message_id'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>mesaj</title>
+    <title>Mesajlar</title>
     <link href="../favicon.ico" rel="icon">
     <!-- css -->
     <?php include 'includes/css.php'; ?>
@@ -60,7 +60,7 @@ if (isset($_POST['delete_message_id'])) {
                             <div class="card p-3 shadow-sm">
 
                                 <?php if (count($messages) === 0): ?>
-                                    <p class="no-message">No messages available.</p>
+                                    <p class="no-message">Hiç mesaj bulunamadı.</p>
                                 <?php else: ?>
                                     <ul class="list-group">
                                         <?php foreach ($messages as $message): ?>
@@ -70,9 +70,9 @@ if (isset($_POST['delete_message_id'])) {
                                                 <small><em><?php echo htmlspecialchars($message['created_at']); ?></em></small>
                                                 <div class="mt-2">
                                                     <?php if ($message['status'] == 'no_checked'): ?>
-                                                        <button class="btn btn-success btn-sm check-message" data-id="<?php echo $message['id']; ?>">Checked</button>
+                                                        <button class="btn btn-success btn-sm check-message" data-id="<?php echo $message['id']; ?>">Okundu</button>
                                                     <?php endif; ?>
-                                                    <button class="btn btn-danger btn-sm delete-message" data-id="<?php echo $message['id']; ?>">Delete</button>
+                                                    <button class="btn btn-danger btn-sm delete-message" data-id="<?php echo $message['id']; ?>">Sil</button>
                                                 </div>
                                             </li>
                                         <?php endforeach; ?>
@@ -95,7 +95,7 @@ if (isset($_POST['delete_message_id'])) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
-        // Button to mark message as 'Checked'
+        // Mesajı 'Okundu' olarak işaretleme butonu
         $('.check-message').on('click', function() {
             var messageId = $(this).data('id');
             $.post('', {
@@ -105,7 +105,7 @@ if (isset($_POST['delete_message_id'])) {
             });
         });
 
-        // Delete message
+        // Mesajı silme
         $('.delete-message').on('click', function() {
             var messageId = $(this).data('id');
             $.post('', {
