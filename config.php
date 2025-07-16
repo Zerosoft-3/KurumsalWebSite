@@ -156,4 +156,4 @@ class Database
     {
         return $this->conn->insert_id;
     }
-} 
+}
