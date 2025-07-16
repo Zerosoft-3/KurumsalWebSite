@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($query->eQuery($sql, $params)) {
         header('Location: services.php?updated=true');
     } else {
+        // Hata durumunda hiçbir şey yapma veya hata mesajı döndür
         exit();
     }
 }

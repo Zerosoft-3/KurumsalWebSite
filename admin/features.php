@@ -22,13 +22,13 @@ if (isset($_GET['edit'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Features</title>
+    <title>Özellikler - Yönetim Paneli</title>
     <link href="../favicon.ico" rel="icon">
     <?php include 'includes/css.php'; ?>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -49,14 +49,14 @@ if (isset($_GET['edit'])) {
                                 <thead>
                                     <tr>
                                         <th>№</th>
-                                        <th>Title</th>
-                                        <th>Description</th>
-                                        <th>Actions</th>
+                                        <th>Başlık</th>
+                                        <th>Açıklama</th>
+                                        <th>İşlemler</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    // Fetch data from features table
+                                    // Özellikler tablosundan veri çekiliyor
                                     $features = $query->select('features', '*');
                                     $i = 1;
                                     foreach ($features as $index => $feature) {
@@ -66,7 +66,7 @@ if (isset($_GET['edit'])) {
                                         echo "<td>" . htmlspecialchars($feature['title'], ENT_QUOTES, 'UTF-8') . "</td>";
                                         echo "<td>" . htmlspecialchars($feature['description'], ENT_QUOTES, 'UTF-8') . "</td>";
                                         echo "<td>
-                                            <a href='#' class='btn btn-warning' data-id='{$feature['id']}' data-title='" . htmlspecialchars($feature['title'], ENT_QUOTES, 'UTF-8') . "' data-description='" . htmlspecialchars($feature["description"], ENT_QUOTES, 'UTF-8') . "' data-icon='{$feature['icon']}'>Edit</a>
+                                            <a href='#' class='btn btn-warning' data-id='{$feature['id']}' data-title='" . htmlspecialchars($feature['title'], ENT_QUOTES, 'UTF-8') . "' data-description='" . htmlspecialchars($feature["description"], ENT_QUOTES, 'UTF-8') . "' data-icon='{$feature['icon']}'>Düzenle</a>
                                         </td>";
                                         echo "</tr>";
                                     }
@@ -84,8 +84,8 @@ if (isset($_GET['edit'])) {
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="editFeatureModalLabel">Edit</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <h5 class="modal-title" id="editFeatureModalLabel">Düzenle</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Kapat">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -93,16 +93,16 @@ if (isset($_GET['edit'])) {
                             <form method="POST" action="" id="editFeatureForm">
                                 <input type="hidden" name="id" id="editId" value="">
                                 <div class="form-group">
-                                    <label for="title">Title:</label>
+                                    <label for="title">Başlık:</label>
                                     <input type="text" name="title" id="editTitle" class="form-control" maxlength="255"
                                         required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="description">Description:</label>
+                                    <label for="description">Açıklama:</label>
                                     <textarea name="description" id="editDescription" class="form-control"
                                         required></textarea>
                                 </div>
-                                <button type="submit" name="update" class="btn btn-primary">Update</button>
+                                <button type="submit" name="update" class="btn btn-primary">Güncelle</button>
                             </form>
                         </div>
                     </div>
@@ -111,31 +111,31 @@ if (isset($_GET['edit'])) {
 
         </div>
 
-        <!-- Main Footer -->
+        <!-- Ana Altbilgi -->
         <?php include 'includes/footer.php'; ?>
     </div>
 
-    <!-- SCRIPTS -->
+    <!-- KOMUT DOSYALARI -->
     <?php include 'includes/js.php'; ?>
 
     <script>
-        // Open modal when the edit button is clicked
+        // Düzenle butonu tıklandığında modalı aç
         $(document).ready(function () {
             $('.btn-warning').click(function (e) {
                 e.preventDefault();
 
-                // Fill the modal
+                // Modalı doldur
                 var id = $(this).data('id');
                 var title = $(this).data('title');
                 var description = $(this).data('description');
                 var icon = $(this).data('icon');
 
-                // Fill the modal fields
+                // Modal alanlarını doldur
                 $('#editId').val(id);
                 $('#editTitle').val(title);
                 $('#editDescription').val(description);
 
-                // Show the modal
+                // Modalı göster
                 $('#editFeatureModal').modal('show');
             });
         });

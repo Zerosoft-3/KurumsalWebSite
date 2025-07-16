@@ -4,57 +4,57 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
 // Sidebar-Menu structure -->
 $menuItems = [
     [
-        "menuTitle" => "User",
+        "menuTitle" => "Kullanıcı",
         "icon" => "fa-solid fa-user-gear",
         "pages" => [
-            ["title" => "Admin", "url" => "index.php"],
-            ["title" => "User Settings", "url" => "user.php"],
+            ["title" => "Yönetici", "url" => "dashboard.php"],
+            ["title" => "Kullanıcı Ayarları", "url" => "user.php"],
         ],
     ],
     [
-        "menuTitle" => "Notifications",
+        "menuTitle" => "Bildirimler",
         "icon" => "fa-solid fa-bell",
         "pages" => [
-            ["title" => "Messages", "url" => "messages.php"],
+            ["title" => "Mesajlar", "url" => "messages.php"],
         ],
     ],
     [
-        "menuTitle" => "Home",
+        "menuTitle" => "Ana Sayfa",
         "icon" => "fa-solid fa-house",
         "pages" => [
             ["title" => "Banner", "url" => "banner.php"],
-            ["title" => "Features", "url" => "features.php"],
+            ["title" => "Özellikler", "url" => "features.php"],
         ],
     ],
     [
-        "menuTitle" => "About Us",
+        "menuTitle" => "Hakkımızda",
         "icon" => "fa fa-info-circle",
         "pages" => [
-            ["title" => "About Us", "url" => "about.php"],
-            ["title" => "Statistics", "url" => "statistics.php"],
+            ["title" => "Hakkımızda", "url" => "about.php"],
+            ["title" => "İstatistikler", "url" => "statistics.php"],
         ],
     ],
     [
-        "menuTitle" => "Services",
+        "menuTitle" => "Hizmetler",
         "icon" => "fa fa-briefcase",
         "pages" => [
-            ["title" => "Our Services", "url" => "ourServices.php"],
-            ["title" => "Services", "url" => "services.php"],
+            ["title" => "Hizmetlerimiz", "url" => "ourServices.php"],
+            ["title" => "Hizmetler", "url" => "services.php"],
         ],
     ],
     [
-        "menuTitle" => "Products",
+        "menuTitle" => "Ürünler",
         "icon" => "fa fa-shopping-bag",
         "pages" => [
-            ["title" => "Product Categories", "url" => "category.php"],
-            ["title" => "All Products", "url" => "products.php"],
+            ["title" => "Ürün Kategorileri", "url" => "category.php"],
+            ["title" => "Tüm Ürünler", "url" => "products.php"],
         ],
     ],
     [
-        "menuTitle" => "Contact",
+        "menuTitle" => "İletişim",
         "icon" => "fa-solid fa-address-book",
         "pages" => [
-            ["title" => "Contact Information", "url" => "contact.php"],
+            ["title" => "İletişim Bilgileri", "url" => "contact.php"],
         ],
     ]
 ];
@@ -90,11 +90,11 @@ $message_count = (new Database())->eQuery("SELECT COUNT(*) AS no_checked_count F
     <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" data-widget="pushmenu" role="button"><i class="fas fa-bars"></i></a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block"><a href="./" class="nav-link">Home</a></li>
+        <li class="nav-item d-none d-sm-inline-block"><a href="./dashboard.php" class="nav-link">Ana Sayfa</a></li>
     </ul>
     <form class="form-inline ml-3">
         <div class="input-group input-group-sm">
-            <input class="form-control form-control-navbar" type="search" placeholder="Search" name="search">
+            <input class="form-control form-control-navbar" type="search" placeholder="Ara" name="search">
             <div class="input-group-append">
                 <button class="btn btn-navbar" type="submit"><i class="fas fa-search"></i></button>
             </div>
@@ -126,15 +126,15 @@ $message_count = (new Database())->eQuery("SELECT COUNT(*) AS no_checked_count F
 </div>
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="./" class="brand-link">
-        <img src="../assets/img/logo.png" alt="Admin Panel Logo" class="brand-image img-circle elevation-3">
-        <span class="brand-text font-weight-light">Admin Panel</span>
+    <a href="./dashboard.php" class="brand-link">
+        <img src="../assets/img/logo.png" alt="Yönetim Paneli Logosu" class="brand-image img-circle elevation-3">
+        <span class="brand-text font-weight-light">Yönetim Paneli</span>
     </a>
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image"><img src="../assets/img/default.png" class="img-circle elevation-2" alt="User Image">
+            <div class="image"><img src="../assets/img/default.png" class="img-circle elevation-2" alt="Kullanıcı Resmi">
             </div>
-            <div class="info"><a href="./" class="d-block">Iqbolshoh Ilhomjonov</a></div>
+            <div class="info"><a href="./dashboard.php" class="d-block">Iqbolshoh Ilhomjonov</a></div>
         </div>
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
@@ -163,7 +163,7 @@ $message_count = (new Database())->eQuery("SELECT COUNT(*) AS no_checked_count F
                 <li class="nav-item" onclick="logout()">
                     <a href="javascript:void(0);" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
-                        <p>Logout</p>
+                        <p>Çıkış Yap</p>
                     </a>
                 </li>
             </ul>
@@ -175,16 +175,16 @@ $message_count = (new Database())->eQuery("SELECT COUNT(*) AS no_checked_count F
 <script>
     function logout() {
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You will be logged out!",
+            title: 'Emin misiniz?',
+            text: "Oturumunuz kapatılacaktır!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, log me out!'
+            confirmButtonText: 'Evet, çıkış yap!'
         }).then((result) => {
             if (result.value) {
-                window.location.href = './logout/';
+                window.location.href = './logout.php';
             }
         });
     }

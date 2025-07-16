@@ -4,14 +4,14 @@ $query = new Database();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Contact</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>İletişim - Tohum Web Sitesi</title>
+  <meta name="description" content="Bize ulaşın: iletişim bilgileri, telefon numaraları ve adres bilgileri.">
+  <meta name="keywords" content="iletişim, telefon, adres, email, mesaj, tohum web sitesi">
   <link href="favicon.ico" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -33,20 +33,20 @@ $query = new Database();
 
   <main class="main">
 
-    <!-- Page title -->
+    <!-- Sayfa Başlığı -->
     <div class="page-title" data-aos="fade">
       <div class="container">
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="./">Home</a></li>
-            <li class="current">Contact</li>
+            <li><a href="./">Ana Sayfa</a></li>
+            <li class="current">İletişim</li>
           </ol>
         </nav>
-        <h1>Contact</h1>
+        <h1>İletişim</h1>
       </div>
-    </div><!-- End of Page title -->
+    </div><!-- Sayfa Başlığı Sonu -->
 
-    <!-- Contact section -->
+    <!-- İletişim bölümü -->
     <section id="contact" class="contact section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -61,7 +61,7 @@ $query = new Database();
                 <h3><?php echo $contact['title']; ?></h3>
                 <p><?php echo $contact['value']; ?></p>
               </div>
-            </div><!-- End of Info Item -->
+            </div><!-- Bilgi Kutusu Sonu -->
           <?php endforeach; ?>
 
         </div>
@@ -72,53 +72,53 @@ $query = new Database();
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2974.8813426551865!2d67.01298087569626!3d39.58263960598262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f4d21d3f20f2e7d%3A0x65da282d59cb1b22!2sUy!5e1!3m2!1sen!2s!4v1738728573422!5m2!1sen!2s"
               width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div><!-- End of Google Map -->
+          </div><!-- Google Harita Sonu -->
 
           <div class="col-lg-6">
             <form action="send_message.php" method="post" class="php-email-form" id="contactForm" data-aos="fade-up"
               data-aos-delay="100">
               <div class="row gy-4">
                 <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required=""
+                  <input type="text" name="name" class="form-control" placeholder="Adınız Soyadınız" required=""
                     maxlength="255">
                 </div>
                 <div class="col-md-6">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required=""
+                  <input type="email" class="form-control" name="email" placeholder="E-posta Adresiniz" required=""
                     maxlength="255">
                 </div>
                 <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required=""
+                  <input type="text" class="form-control" name="subject" placeholder="Konu" required=""
                     maxlength="255">
                 </div>
                 <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+                  <textarea class="form-control" name="message" rows="6" placeholder="Mesajınız" required=""></textarea>
                 </div>
                 <div class="col-md-12 text-center">
 
-                  <button type="submit">Send Message</button>
-                  <div class="sent-message" style="display: none;">Your message has been sent successfully!</div>
-                  <div class="error-message" style="display: none;"></div>
+                  <button type="submit">Mesaj Gönder</button>
+                  <div class="sent-message" style="display: none;">Mesajınız başarıyla gönderildi!</div>
+                  <div class="error-message" style="display: none;">Mesaj gönderilirken bir hata oluştu.</div>
                 </div>
               </div>
             </form>
 
-          </div><!-- End of Contact Form -->
+          </div><!-- İletişim Formu Sonu -->
 
         </div>
 
       </div>
 
-    </section><!-- End of Contact section -->
+    </section><!-- İletişim Bölümü Sonu -->
 
   </main>
 
   <?php include 'includes/footer.php' ?>
 
-  <!-- Scroll to Top -->
+  <!-- Başa Dön -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
+  <!-- Vendor JS Dosyaları -->
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
@@ -128,7 +128,7 @@ $query = new Database();
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
 
-  <!-- Main JS File -->
+  <!-- Ana JS Dosyası -->
   <script src="assets/js/main.js"></script>
 
   <script>
@@ -166,4 +166,4 @@ $query = new Database();
 
 </body>
 
-</html>
+</html> 
